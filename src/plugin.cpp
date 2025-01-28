@@ -1,5 +1,4 @@
 #include "plugin.hpp"
-#include "editor.hpp"
 
 #define DEFAULT_BUSES juce::AudioProcessor::BusesProperties() \
   .withInput("Input", juce::AudioChannelSet::stereo()) \
