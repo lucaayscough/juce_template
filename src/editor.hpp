@@ -1,17 +1,13 @@
 #pragma once
 
-#include <juce_audio_processors/juce_audio_processors.h>
-
 struct Editor : juce::AudioProcessorEditor {
-  explicit Editor(juce::AudioProcessor&);
+  Editor(juce::AudioProcessor& p) : AudioProcessorEditor(&p) {
+    setSize(600, 600);
+  }
 
-  void paint(juce::Graphics&) override;
+  void paint(juce::Graphics& g) override {
+    g.fillAll(juce::Colours::yellow);
+  }
 };
 
-Editor::Editor(juce::AudioProcessor& p) : AudioProcessorEditor(&p) {
-  setSize(600, 600);
-}
 
-void Editor::paint(juce::Graphics& g) {
-  g.fillAll(juce::Colours::yellow);
-}

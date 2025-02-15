@@ -1,7 +1,6 @@
 #pragma once
 
-#include "editor.hpp"
-#include <juce_audio_processors/juce_audio_processors.h>
+#include "headers.hpp"
 
 struct Plugin : juce::AudioProcessor {
   Plugin();
