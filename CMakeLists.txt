@@ -10,7 +10,24 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15")
 
 cmake_minimum_required(VERSION 3.22)
 
+option(ASAN "Enable the Address Sanitizer" OFF)
+if (ASAN)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
+  set(CMAKE_LINKER_FLAGS "${CMAKE_LINKER_FLAGS} -fsanitize=address")
+endif()
+
+option(TSAN "Enable the Thread Sanitizer" OFF)
+if (TSAN)
+  if (ASAN)
+    message("Skipping thread sanitizer. Turn off the address sanitizer if you want to use the thread sanitizer.")
+  else()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=thread")
+    set(CMAKE_LINKER_FLAGS "${CMAKE_LINKER_FLAGS} -fsanitize=thread")
+  endif()
+endif()
+
 set(FORMATS "Standalone;VST3" CACHE STRING "Plugin formats for JUCE to build. Valid formats: VST AU AUv3 Standalone")
+
 message("-- Building formats: ${FORMATS}")
 
 project(${PLUGIN_NAME} VERSION ${VERSION} LANGUAGES C CXX)
