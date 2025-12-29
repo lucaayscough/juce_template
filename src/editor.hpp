@@ -9,5 +9,3 @@ struct Editor : juce::AudioProcessorEditor {
     g.fillAll(juce::Colours::yellow);
   }
 };
-
-
