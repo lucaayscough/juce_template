@@ -2,9 +2,10 @@
 
 file(STRINGS "VERSION" VERSION)
 
-set(PLUGIN_NAME "Plugin")
+set(PLUGIN_NAME "PluginTemplate")
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15")
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 ################################################################################
 
@@ -54,7 +55,7 @@ juce_generate_juce_header(${PLUGIN_NAME})
 
 #juce_add_binary_data(Assets SOURCES)
 
-target_sources(${PLUGIN_NAME} PRIVATE src/plugin.cpp)
+target_sources(${PLUGIN_NAME} PRIVATE src/juce/unity_build.cpp)
 
 target_compile_definitions(${PLUGIN_NAME} PUBLIC
   JUCE_WEB_BROWSER=0
